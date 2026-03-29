@@ -163,7 +163,7 @@ export default function Globe({ guesses, globeRef, practiceMode }: Props) {
           width={size}
           height={size}
           backgroundColor="#00000000"
-          polygonsData={places}
+          polygonsData={places.filter((place) => place.properties.TYPE !== "Territory")}
           // @ts-ignore
           polygonCapColor={polygonColour}
           // @ts-ignore
@@ -174,6 +174,15 @@ export default function Globe({ guesses, globeRef, practiceMode }: Props) {
           onGlobeClick={(d) => turnGlobe(d, globeRef)}
           onPolygonClick={(p, e, c) => turnGlobe(c, globeRef)}
           polygonStrokeColor="#00000000"
+          hexPolygonsData={places.filter((place) => place.properties.TYPE === "Territory")}
+          // @ts-ignore
+          hexPolygonColor={polygonColour}
+          // @ts-ignore
+          hexPolygonAltitude={getAltitude}
+          // @ts-ignore
+          hexPolygonLabel={getLabel}
+          hexPolygonResolution={5}
+          onHexPolygonClick={(p, e, c) => turnGlobe(c, globeRef)}
           atmosphereColor={nightMode ? "rgba(63, 201, 255)" : "lightskyblue"}
           onZoom={globeOnZoom}
         />
