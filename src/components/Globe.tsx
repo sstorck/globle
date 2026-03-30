@@ -181,7 +181,7 @@ export default function Globe({ guesses, globeRef, practiceMode }: Props) {
           hexPolygonAltitude={getAltitude}
           // @ts-ignore
           hexPolygonLabel={getLabel}
-          hexPolygonResolution={5}
+          hexPolygonResolution={5} // Default of 3 is too small to see, e.g. Canary Islands. Larger values cause render to time out.
           onHexPolygonClick={(p, e, c) => turnGlobe(c, globeRef)}
           atmosphereColor={nightMode ? "rgba(63, 201, 255)" : "lightskyblue"}
           onZoom={globeOnZoom}
